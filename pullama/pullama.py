@@ -14,7 +14,7 @@ from .diffchain.chains import DiffChain, PullamaOptions
 @click.option("--repo", "-r", help="Repo to summarize.")
 @click.option("--source", "-s", prompt="Source branch", help="Source branch/commit for the diff.")
 @click.option("--target", "-t", default="master", help="The target branch/commit for the diff.")
-@click.option("--language", "-l", default="JAVA", help="Main language of the repo. JAVA, PYTHON, GO supported.")
+@click.option("--language", "-l", default="JAVA", help="Main language of the repo. JAVA, PYTHON, GO, TS supported.")
 @click.option(
     "--assess",
     "-a",
@@ -34,7 +34,7 @@ def pullama(server, repo, source, target, assess, verbose: bool, language: str):
 
     llm = Ollama(
         base_url=server,
-        model="llama2",
+        model="llama3:70b",
         verbose=verbose,
         callback_manager=CallbackManager([StdOutCallbackHandler()]),
     )
@@ -45,4 +45,3 @@ def pullama(server, repo, source, target, assess, verbose: bool, language: str):
     if assess:
         impact = diffchain.check_impact(summary, embeddings, llm)
         print(impact)
-

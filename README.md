@@ -57,7 +57,12 @@ TOKENIZERS_PARALLELISM=true python -m pullama -r /paht/to/repo/terraform-provide
 
 Clone from Moss's public repo [pullama](https://github.com/getmoss/pullama).
 
-If you want to clone the project, install the dependencies with `pipenv`.
+1. create virtualenv for the clone repo: `pip3 install pipenv`
+2. activate virtualenv by `pipenv shell`
+3. install poetry `pip install poetry`
+4. re-generate poetry lock file if the version does not match `poetry lock --no-update`
+5. install dependencies `poetry install`
+6. `TOKENIZERS_PARALLELISM=true pullama -r ~/path/to/repo -s c6d3d73 -t d941437 -l TS --server http://localhost:11434`
 
 ```bash
 > python -m pullama --help

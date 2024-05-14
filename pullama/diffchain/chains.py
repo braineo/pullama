@@ -18,6 +18,8 @@ def lang_to_ext(language: Language) -> str:
         return '.py'
     elif Language.GO == language:
         return '.go'
+    elif Language.TS == language:
+        return '.ts?(x)'
     else:
         print('{} is not supported'.format(language))
         exit(1)
